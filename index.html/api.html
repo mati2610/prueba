@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
+    
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Ligas de españa</title>
+  </head>
+  <body>
+    <h1 class="text-center">OBTENER DATOS</h1>
+    <br><br>
+    <p>La Liga española de fútbol, cuyo nombre oficial es "Liga Nacional de Fútbol Profesional" y denominación comercial "LaLiga", es la principal competición entre equipos de fútbol federados en España. Se celebra anualmente desde 1929 y la temporada se desarrolla generalmente entre los meses de septiembre y junio (puede variar por ajustes del calendario). La liga está formada por divisiones cuya máxima categoría es la Primera División. Al término de cada temporada y en función de los resultados obtenidos, los equipos participantes pueden ascender o descender de división.
+       La Liga Nacional de Fútbol Profesional organiza desde 1984 la Primera División y la Segunda División, mientras que la Real Federación Española de Fútbol organiza la Segunda División "B" y la Tercera División. Las divisiones regionales son competencia de las federaciones autonómicas.
+       A partir de 2021 los 36 mejores equipos de la Segunda División "B" 2020-21 se sumarán a los 4 descendidos de la Segunda División 2020-21 para formar una nueva división dentro de una reestructuración del actual sistema de ligas de España. Así, tras las dos categorías profesionales de Primera y Segunda División se encontrará una tercera categoría denominada Primera División RFEF, de nueva instauración, seguida de la Segunda División RFEF, actual Segunda División "B", que pasa a ser la cuarta categoría, y la Tercera División RFEF, actual Tercera División, que pasa a ser la quinta categoría.</p>
+    <br>
+    <center><img width="200" height="200" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/LaLiga.svg/1200px-LaLiga.svg.png"></center>
+    <br><br>
+    <center><img width="100" height="100" src="https://images.emojiterra.com/twitter/v13.0/512px/2b07.png"></center>
+       <div class="container">
+        <div class="row">
+            <h3>Informacion de ligas de españa</h3>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-primary" id="enviar">Traer datos de ligas de españa</button>
+        </div>
+        <div class="row">
+            <table class="table" id="leagues">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" >Liga</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Ligas Alternativas</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+        <script>
+            $("#enviar").click(function(){
+                $.get("https://www.thesportsdb.com/api/v1/json/1/all_leagues.php",
+                    function(data){
+                        $.each(data.leagues, function(i, item){
+                            $("#leagues").append("<tr><td>" + item.idLeague + "</td><td>" + item.strLeague + "</td><td>" + item.strSport + "</td><td>" + item.strLeagueAlternate + "</td></tr>") 
+                        });
+                    });
+            });
+        </script>
+    
+  </body>
+</html>
